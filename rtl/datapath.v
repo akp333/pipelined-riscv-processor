@@ -55,12 +55,13 @@ pc_reg reg_pc (
     .PCF(PCF)
 );
 
-assign PCPlus4=PCF+32'd4;
+assign PCPlus4F=PCF+32'd4;
 
 wire [31:0] InstrD, PCD, PCPlus4D;
 
 if_id_reg reg_if_id (
     .clk(clk),
+    .rst(rst|FlushD),
     .en(~StallD),
     .instr_if(InstrF),
     .pc_if(PCF),
@@ -147,6 +148,7 @@ id_ex_reg reg_id_ex (
     .RdE(RdE),
     .RD1E(RD1E),
     .RD2E(RD2E),
+    
     .ResultSrcE(ResultSrcE),
     .RegWriteE(RegWriteE),
     .MemWriteE(MemWriteE),
@@ -210,6 +212,7 @@ assign PCSrcE=(BranchE & ZeroE) | JumpE;
 wire [31:0] PCPlus4M;
 wire [4:0] RdM;
 wire [1:0] ResultSrcM;
+wire RegWriteM;
 
 ex_mem_reg reg_ex_mem (
     .clk(clk), .rst(rst),
@@ -274,11 +277,9 @@ hazard_unit hu (
     .ForwardBE(ForwardBE),
     .FlushE(FlushE),
     .RdM(RdM),
-    .RegWriteM(RegWriteW_M),
+    .RegWriteM(RegWriteM),
     .RdW(RdW),
     .RegWriteW(RegWriteW)
 );
 
 endmodule
-
-
