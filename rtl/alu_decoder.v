@@ -19,6 +19,7 @@ always @(*) begin
                 3'b010: ALUControl=4'b0100; //SLT, SLTI
                 3'b110: ALUControl=4'b0011; //OR, ORI
                 3'b111: ALUControl=4'b0010; //AND, ANDI
+                3'b100: ALUControl=4'b0110; //XOR, XORI
                 3'b011: ALUControl=4'b0101; //SLTU, SLTIU
                 3'b001: ALUControl=4'b0111; //SLL, SLLI
                 3'b101: begin
