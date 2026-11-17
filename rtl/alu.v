@@ -12,11 +12,11 @@ always @(a,b,alu_ctrl) begin
         4'b0010: alu_out=a&b; //AND
         4'b0011: alu_out=a|b; //OR
         4'b0100: alu_out=($signed(a) < $signed(b)) ? 32'b1:32'b0; //SLT
-        4'b0101: alu_out=(a<b)?1:0; //SLTIU, SLTU
+        4'b0101: alu_out=(a<b)?1:0; //SLTU
         4'b0110: alu_out=a^b; //XOR
-        4'b0111: alu_out=a<<b[4:0]; //SLL, SLLI
-        4'b1000: alu_out=a>>b[4:0]; //SRL, SRLI
-        4'b1001: alu_out=$signed(a)>>>b[4:0]; //SRA,
+        4'b0111: alu_out=a<<b[4:0]; //SLL
+        4'b1000: alu_out=a>>b[4:0]; //SRL
+        4'b1001: alu_out=$signed(a)>>>b[4:0]; //SRA
         default: alu_out=0; 
     endcase
 end
