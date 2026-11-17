@@ -22,6 +22,6 @@ end
 assign rd_data1=(rd_addr1==0)?0:
                 ((rd_addr1==wr_addr)&&wr_en)?wr_data:reg_file_arr[rd_addr1];
 assign rd_data2=(rd_addr2==0)?0:
-                ((rd_addr2==wr_addr)&&wr_en)?wr_data:reg_file_arr[rd_addr1];
+                ((rd_addr2==wr_addr)&&wr_en)?wr_data:reg_file_arr[rd_addr2];
 
 endmodule
