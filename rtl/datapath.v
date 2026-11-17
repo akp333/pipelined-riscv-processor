@@ -207,7 +207,7 @@ assign BranchTake=
     (funct3E==3'b101) ? ~ALUResultE[31]: // BGE
     1'b0;
 
-assign PCSrcE=(BranchE & ZeroE) | JumpE;
+    assign PCSrcE=(BranchE & BranchTake) | JumpE;
 
 wire [31:0] PCPlus4M;
 wire [4:0] RdM;
